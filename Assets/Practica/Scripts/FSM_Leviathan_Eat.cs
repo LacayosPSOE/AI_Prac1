@@ -49,9 +49,9 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
         () => { wanderAround.enabled = false; });
 
         State huntFish = new State("Hunt_Fish",
-        () => { arrive.target = fish; blackboard.speed = blackboard.speed * 2; arrive.enabled = true; },
+        () => { arrive.target = fish; steeringContext.maxSpeed = steeringContext.maxSpeed * 2; arrive.enabled = true; },
         () => { },
-        () => { wanderAround.enabled = false; blackboard.speed = blackboard.speed / 2;arrive.enabled = false; });
+        () => { wanderAround.enabled = false; steeringContext.maxSpeed = steeringContext.maxSpeed / 2;arrive.enabled = false; });
 
         State eatFish = new State("Eat_Fish",
         () => { eatTimer = 0f; },

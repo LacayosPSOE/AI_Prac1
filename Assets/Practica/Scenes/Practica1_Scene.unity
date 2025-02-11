@@ -679,13 +679,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789880612}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 1.1906233, y: -0.86851114, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &789880615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84d2230696b2ad4faaab4976079504e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationalPolicy: 3
+  rotationalPolicy: 0
   attractor: {fileID: 1867800207}
 --- !u!114 &789880618
 MonoBehaviour:
@@ -759,10 +759,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15fadfb23a909584e8ff82b91a0977c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 40
-  maxSpeed: 10
+  maxAcceleration: 1
+  maxSpeed: 1
   clipVelocity: 1
-  maxAngularAcceleration: 360
+  maxAngularAcceleration: 0
   maxAngularSpeed: 90
   clipAngularSpeed: 1
   timeToDesiredSpeed: 0.1
@@ -783,9 +783,9 @@ MonoBehaviour:
   alignmentWeight: 0.2
   addWanderIfZero: 1
   wanderRate: 30
-  wanderRadius: 10
-  wanderOffset: 20
-  showWanderGizmos: 0
+  wanderRadius: 1
+  wanderOffset: 2
+  showWanderGizmos: 1
   wanderTargetOrientation: 0
   seekWeight: 0.2
   lookAheadLength: 10
