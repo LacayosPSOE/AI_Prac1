@@ -49,9 +49,9 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
         () => { wanderAround.enabled = false; });
 
         State huntFish = new State("Hunt_Fish",
-        () => { arrive.target = fish; blackboard.speed = blackboard.speed * 2; },
+        () => { arrive.target = fish; blackboard.speed = blackboard.speed * 2; arrive.enabled = true; },
         () => { },
-        () => { wanderAround.enabled = false; blackboard.speed = blackboard.speed / 2; });
+        () => { wanderAround.enabled = false; blackboard.speed = blackboard.speed / 2;arrive.enabled = false; });
 
         State eatFish = new State("Eat_Fish",
         () => { eatTimer = 0f; },
@@ -81,7 +81,8 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 
         Transition stillHungry = new Transition("Still_Hungry",
          () => {
-             return eatTimer >= blackboard.eatMaxTimer && Random.value < 0.5f;
+             fish = SensingUtils.FindRandomInstanceWithinRadius(gameObject, "FISH", 1000f);
+             return (fish != null && eatTimer >= blackboard.eatMaxTimer && Random.value < 0.5f);
          },
         () => { });
 
