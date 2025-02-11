@@ -2,8 +2,47 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - REPULSIVE
+  - BLUE_BOID
+  - BOUQUET
+  - SAM
+  - WORM
+  - RED_BOID
+  - CHOCOLATES
+  - SEED
+  - NERD
+  - ATTACKER
+  - CHEESE
+  - MOUSE
+  - BOID
+  - CHICK
+  - SCARED
+  - FREE_GUTS
+  - NO_ITEM
+  - MATCHES
+  - DEPOSITPOINT
+  - PREDATOR
+  - DROPPED
+  - BATCAT
+  - RED_TAG
+  - BUBBLE
+  - ITEM
+  - WOOD
+  - TRASH
+  - GHOST
+  - MONEY
+  - NEWSPAPER
+  - WANDERPOINT
+  - TRASH_CAN
+  - BEER
+  - HEN
+  - NO_SEED
+  - TARGETLOC
+  - TRAPPED_MOUSE
+  - COHESIVE
+  - FISH
   layers:
   - Default
   - TransparentFX
@@ -41,3 +80,5 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  m_RenderingLayers:
+  - Default
