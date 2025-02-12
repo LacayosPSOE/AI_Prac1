@@ -8,12 +8,19 @@ public class FSM_Leviathan_HuntingPlayer : FiniteStateMachine
     /* Declare here, as attributes, all the variables that need to be shared among
      * states and transitions and/or set in OnEnter or used in OnExit 
      * For instance: steering behaviours, blackboard, ...*/
+         private Seek seek;
+    private LEVIATHAN_Blackboard blackboard;
+    private SteeringContext steeringContext;
+    private float stamina;
 
     public override void OnEnter()
     {
         /* Write here the FSM initialization code. This code is execute every time the FSM is entered.
          * It's equivalent to the on enter action of any state 
          * Usually this code includes .GetComponent<...> invocations */
+        seek = GetComponent<Seek>();
+        blackboard = GetComponent<LEVIATHAN_Blackboard>();
+        steeringContext = GetComponent<SteeringContext>();
         base.OnEnter(); // do not remove
     }
 
@@ -49,7 +56,20 @@ public class FSM_Leviathan_HuntingPlayer : FiniteStateMachine
         );
 
         */
+        FiniteStateMachine EAT = ScriptableObject.CreateInstance<FSM_Leviathan_Eat>();
+        EAT.name = "EAT";
+         State chasePlayer = new State("Chase_Player",
+            () => { seek.target = blackboard.Player; seek.enabled = true; stamina = 0f; },
+            () => { stamina += Time.deltaTime;},
+            () => { seek.enabled = false; }
+        );
 
+        State eatState = new State("Eat_State",
+            () => { blackboard.eatMaxTimer = 0f; },
+            () => { blackboard.eatMaxTimer += Time.deltaTime;},
+            () => {blackboard.Player.SetActive(false); }
+        );
+  
 
         /* STAGE 3: add states and transitions to the FSM 
          * ----------------------------------------------
@@ -59,6 +79,22 @@ public class FSM_Leviathan_HuntingPlayer : FiniteStateMachine
         AddTransition(sourceState, transition, destinationState);
 
          */ 
+         Transition playerTooClose = new Transition("Player_Too_Close",
+            () => { return SensingUtils.DistanceToTarget(gameObject, blackboard.Player) < blackboard.playerChaseRadius; },
+            () => { }
+        );
+
+        Transition playerFar = new Transition("Player_Far",
+            () => { return SensingUtils.DistanceToTarget(gameObject, blackboard.Player) >= blackboard.playerChaseRadius || blackboard.maxStamina <= stamina; },
+            () => { }
+        );
+
+        AddStates(EAT, chasePlayer, eatState);
+        AddTransition(EAT, playerTooClose, chasePlayer);
+        AddTransition(chasePlayer, playerFar, EAT);
+
+        initialState = EAT;
+
 
 
         /* STAGE 4: set the initial state
