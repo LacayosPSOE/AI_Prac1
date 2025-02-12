@@ -500,8 +500,8 @@ Transform:
   m_GameObject: {fileID: 689163590}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0484, y: -0.0439, z: 0}
-  m_LocalScale: {x: 2.4892006, y: 2.528352, z: 1}
+  m_LocalPosition: {x: -0.153, y: -0.2967, z: 0}
+  m_LocalScale: {x: 2.9093738, y: 2.6547694, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -587,7 +587,7 @@ Transform:
   m_GameObject: {fileID: 759567563}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.59, y: -2.44, z: 0}
+  m_LocalPosition: {x: 2.59, y: -5.2, z: 0}
   m_LocalScale: {x: 0.0677, y: 0.0677, z: 0.0677}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -679,13 +679,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789880612}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 1.1906233, y: -0.86851114, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &789880615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,11 +714,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WanderMaxTime: 8
   WanderTime: 0
-  speed: 8
   timeToEatFish: 1.5
   eatRadius: 1.5
   eatMaxTimer: 1.5
+  playerChaseRadius: 3
+  maxStamina: 6
   Home: {fileID: 1908766566}
+  Player: {fileID: 759567563}
 --- !u!114 &789880617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,7 +733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84d2230696b2ad4faaab4976079504e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationalPolicy: 3
+  rotationalPolicy: 0
   attractor: {fileID: 1867800207}
 --- !u!114 &789880618
 MonoBehaviour:
@@ -759,10 +761,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15fadfb23a909584e8ff82b91a0977c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 40
-  maxSpeed: 10
+  maxAcceleration: 1
+  maxSpeed: 1
   clipVelocity: 1
-  maxAngularAcceleration: 360
+  maxAngularAcceleration: 0
   maxAngularSpeed: 90
   clipAngularSpeed: 1
   timeToDesiredSpeed: 0.1
@@ -783,9 +785,9 @@ MonoBehaviour:
   alignmentWeight: 0.2
   addWanderIfZero: 1
   wanderRate: 30
-  wanderRadius: 10
-  wanderOffset: 20
-  showWanderGizmos: 0
+  wanderRadius: 1
+  wanderOffset: 2
+  showWanderGizmos: 1
   wanderTargetOrientation: 0
   seekWeight: 0.2
   lookAheadLength: 10
@@ -813,7 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823459bfcabf59e4bbb7d30c1033e0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fsm: {fileID: 11400000, guid: 3c4e0fd94bb20fe4c99cf9bc83e221df, type: 2}
+  fsm: {fileID: 11400000, guid: 21ae8447471b0d149ab2a3a0b5d3d539, type: 2}
   currentState: 
   textMesh: {fileID: 1927202930}
 --- !u!1 &902205450
@@ -1030,7 +1032,7 @@ Transform:
   m_GameObject: {fileID: 1867800207}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1831735, y: -2.0387032, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

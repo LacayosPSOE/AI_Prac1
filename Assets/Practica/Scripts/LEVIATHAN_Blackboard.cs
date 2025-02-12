@@ -4,12 +4,14 @@ public class LEVIATHAN_Blackboard : MonoBehaviour
 {
     public float WanderMaxTime = 8f;
     public float WanderTime = 0f;
-    public float speed = 8f;
     public float timeToEatFish = 1.5f;
     public float eatRadius = 1.5f;
     public float eatMaxTimer = 1.5f;
+    public float playerChaseRadius = 3f;
+    public float maxStamina = 6f;
 
     public GameObject Home;
+    public GameObject Player;
 
 
 
