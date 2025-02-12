@@ -9,6 +9,7 @@ public class LEVIATHAN_Blackboard : MonoBehaviour
     public float eatMaxTimer = 1.5f;
     public float playerChaseRadius = 3f;
     public float maxStamina = 6f;
+    public float speed = 2f;
 
     public GameObject Home;
     public GameObject Player;
