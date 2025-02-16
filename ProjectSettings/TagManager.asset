@@ -43,6 +43,7 @@ TagManager:
   - TRAPPED_MOUSE
   - COHESIVE
   - FISH
+  - PLAYER
   layers:
   - Default
   - TransparentFX
