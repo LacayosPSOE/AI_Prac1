@@ -34,29 +34,7 @@ public class FSM_Leviathan_HuntingPlayer : FiniteStateMachine
     }
 
     public override void OnConstruction()
-    {
-        /* STAGE 1: create the states with their logic(s)
-         *-----------------------------------------------
-         
-        State varName = new State("StateName",
-            () => { }, // write on enter logic inside {}
-            () => { }, // write in state logic inside {}
-            () => { }  // write on exit logic inisde {}  
-        );
-
-         */
-
-
-        /* STAGE 2: create the transitions with their logic(s)
-         * ---------------------------------------------------
-
-        Transition varName = new Transition("TransitionName",
-            () => { }, // write the condition checkeing code in {}
-            () => { }  // write the on trigger code in {} if any. Remove line if no on trigger action needed
-        );
-
-        */
-        
+    {        
         FiniteStateMachine EAT = ScriptableObject.CreateInstance<FSM_Leviathan_Eat>();
         EAT.name = "EAT";
          State chasePlayer = new State("Chase_Player",
@@ -70,16 +48,6 @@ public class FSM_Leviathan_HuntingPlayer : FiniteStateMachine
             () => { blackboard.eatMaxTimer += Time.deltaTime;},
             () => {Destroy(blackboard.Player); }
         );
-  
-
-        /* STAGE 3: add states and transitions to the FSM 
-         * ----------------------------------------------
-            
-        AddStates(...);
-
-        AddTransition(sourceState, transition, destinationState);
-
-         */ 
          Transition playerTooClose = new Transition("Player_Too_Close",
             () => { return SensingUtils.DistanceToTarget(gameObject, blackboard.Player) < blackboard.playerChaseRadius; },
             () => { }
@@ -106,13 +74,6 @@ public class FSM_Leviathan_HuntingPlayer : FiniteStateMachine
 
         initialState = EAT;
 
-
-
-        /* STAGE 4: set the initial state
-         
-        initialState = ... 
-
-         */
 
     }
 }

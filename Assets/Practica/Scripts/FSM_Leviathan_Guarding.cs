@@ -1,71 +1,73 @@
 using FSMs;
 using UnityEngine;
 using Steerings;
+using System.Runtime.CompilerServices;
 
 [CreateAssetMenu(fileName = "FSM_Leviathan_Guarding", menuName = "Finite State Machines/FSM_Leviathan_Guarding", order = 1)]
 public class FSM_Leviathan_Guarding : FiniteStateMachine
 {
-    /* Declare here, as attributes, all the variables that need to be shared among
-     * states and transitions and/or set in OnEnter or used in OnExit 
-     * For instance: steering behaviours, blackboard, ...*/
 
+    private Arrive arrive;
+    private LEVIATHAN_Blackboard blackboard;
+    private SteeringContext steeringContext;
+    private float timer;
     public override void OnEnter()
     {
-        /* Write here the FSM initialization code. This code is execute every time the FSM is entered.
-         * It's equivalent to the on enter action of any state 
-         * Usually this code includes .GetComponent<...> invocations */
+
+        arrive = GetComponent<Arrive>();
+        blackboard = GetComponent<LEVIATHAN_Blackboard>();
+        steeringContext = GetComponent<SteeringContext>();
+        
         base.OnEnter(); // do not remove
     }
 
     public override void OnExit()
     {
-        /* Write here the FSM exiting code. This code is execute every time the FSM is exited.
-         * It's equivalent to the on exit action of any state 
-         * Usually this code turns off behaviours that shouldn't be on when one the FSM has
-         * been exited. */
+
         base.OnExit();
     }
 
     public override void OnConstruction()
     {
-        /* STAGE 1: create the states with their logic(s)
-         *-----------------------------------------------
-         
-        State varName = new State("StateName",
-            () => { }, // write on enter logic inside {}
-            () => { }, // write in state logic inside {}
-            () => { }  // write on exit logic inisde {}  
+        FiniteStateMachine EAT = ScriptableObject.CreateInstance<FSM_Leviathan_Eat>();
+        EAT.name = "EAT";
+        FiniteStateMachine HUNT = ScriptableObject.CreateInstance<FSM_Leviathan_HuntingPlayer>();
+        HUNT.name = "HUNT";
+
+        State goHome = new State("Go_Home",
+            () =>
+            {
+                arrive.target = blackboard.Home;
+                blackboard.speed = blackboard.speed * 2;
+                arrive.enabled = true;
+            },
+            () => { },
+            () =>{arrive.enabled = false; blackboard.speed = blackboard.speed / 2;});
+        State Guard = new State("Guard",
+        () =>{},
+        () => { timer += Time.deltaTime; },
+        () => { timer = 0;});
+
+
+        Transition arrivedHome = new Transition("Arrived_Home",
+            () => { return SensingUtils.DistanceToTarget(gameObject, blackboard.Home) < blackboard.eatRadius; }, 
+            () => { }  
         );
+        Transition stopGuarding = new Transition("Stop_Guarding",
+    () => { return timer >= blackboard.maxGuardTimer; },
+    () => { }
+);
+        Transition hunt = new Transition("Hunt",
+        () => { return SensingUtils.DistanceToTarget(gameObject, blackboard.Player) < blackboard.playerChaseRadius; },
+        () => { }
+         );
 
-         */
-
-
-        /* STAGE 2: create the transitions with their logic(s)
-         * ---------------------------------------------------
-
-        Transition varName = new Transition("TransitionName",
-            () => { }, // write the condition checkeing code in {}
-            () => { }  // write the on trigger code in {} if any. Remove line if no on trigger action needed
-        );
-
-        */
-
-
-        /* STAGE 3: add states and transitions to the FSM 
-         * ----------------------------------------------
-            
-        AddStates(...);
-
-        AddTransition(sourceState, transition, destinationState);
-
-         */ 
-
-
-        /* STAGE 4: set the initial state
-         
-        initialState = ... 
-
-         */
-
+        AddStates(EAT, HUNT, goHome, Guard);
+        AddTransition(goHome,arrivedHome,Guard);
+        AddTransition(Guard,stopGuarding, EAT);
+        AddTransition(EAT, hunt, HUNT);
+        AddTransition(goHome, hunt, HUNT);
+        AddTransition(Guard, hunt, HUNT);
+        //Falta que el leviathan vaya a por el player cuando el player esta en su guarida
     }
 }
