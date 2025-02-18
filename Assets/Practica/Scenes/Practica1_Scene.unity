@@ -949,6 +949,13 @@ MonoBehaviour:
   playerChaseRadius: 5
   maxStamina: 6
   speed: 2
+  guardingSpeed: 4
+  huntingSpeed: 4
+  maxGuardTimer: 5
+  playerStealTimer: 5
+  homeArrivedRadius: 1.5
+  screenBoundDistance: 50
+  screenSafeBounds: 20
   Home: {fileID: 1908766566}
   Player: {fileID: 759567563}
 --- !u!114 &789880617
@@ -1019,7 +1026,7 @@ MonoBehaviour:
   wanderOffset: 2
   showWanderGizmos: 1
   wanderTargetOrientation: 0
-  seekWeight: 0.2
+  seekWeight: 0.4
   lookAheadLength: 10
   avoidDistance: 12
   secondaryWhiskerAngle: 30
@@ -1045,7 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823459bfcabf59e4bbb7d30c1033e0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fsm: {fileID: 11400000, guid: 21ae8447471b0d149ab2a3a0b5d3d539, type: 2}
+  fsm: {fileID: 11400000, guid: de3f39593e719ef49ad47fcb09aa75b3, type: 2}
   currentState: 
   textMesh: {fileID: 1927202930}
 --- !u!1 &902205450

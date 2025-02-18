@@ -64,12 +64,12 @@ public class FSM_Leviathan_HuntingPlayer : FiniteStateMachine
 		Transition playerTooClose = new Transition("Player_Too_Close",
 			() =>
 			{
-				return SensingUtils.DistanceToTarget(gameObject, blackboard.Player) < blackboard.playerChaseRadius;
+				return blackboard.Player && SensingUtils.DistanceToTarget(gameObject, blackboard.Player) < blackboard.playerChaseRadius;
 			},
 			() => { }
 		);
 		Transition playerWithinEatRange = new Transition("Player_Within_Eat_Range",
-			() => { return SensingUtils.DistanceToTarget(gameObject, blackboard.Player) < blackboard.eatRadius; },
+			() => { return blackboard.Player && SensingUtils.DistanceToTarget(gameObject, blackboard.Player) < blackboard.eatRadius; },
 			() => { }
 		);
 		Transition playerEaten = new Transition("Player_Within_Eat_Range",
