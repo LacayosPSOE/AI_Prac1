@@ -68,7 +68,7 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 			() => { });
 
 		Transition caughtFish = new Transition("Caught_Fish",
-			() => { return SensingUtils.DistanceToTarget(gameObject, fish) < blackboard.eatRadius; },
+			() => { return fish && SensingUtils.DistanceToTarget(gameObject, fish) < blackboard.eatRadius; },
 			() => { });
 
 		Transition stillHungry = new Transition("Still_Hungry",
