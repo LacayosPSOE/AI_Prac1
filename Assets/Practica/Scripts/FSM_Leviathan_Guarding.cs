@@ -9,13 +9,14 @@ public class FSM_Leviathan_Guarding : FiniteStateMachine
 {
 	private Arrive arrive;
 	private LEVIATHAN_Blackboard blackboard;
+	private SteeringContext steeringContext;
 	private float timer;
 
 	public override void OnEnter()
 	{
 		arrive = GetComponent<Arrive>();
 		blackboard = GetComponent<LEVIATHAN_Blackboard>();
-
+		steeringContext = GetComponent<SteeringContext>();
 		base.OnEnter(); // do not remove
 	}
 
@@ -34,14 +35,14 @@ public class FSM_Leviathan_Guarding : FiniteStateMachine
 			() =>
 			{
 				arrive.target = blackboard.Home;
-				blackboard.speed = blackboard.speed * 2;
+				steeringContext.maxSpeed = blackboard.guardingSpeed;
 				arrive.enabled = true;
 			},
 			() => { },
 			() =>
 			{
 				arrive.enabled = false;
-				blackboard.speed = blackboard.speed / 2;
+				steeringContext.maxSpeed = blackboard.speed;
 			});
 
 		State guard = new State("Guard",

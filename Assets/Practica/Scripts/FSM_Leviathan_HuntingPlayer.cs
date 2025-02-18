@@ -11,6 +11,7 @@ public class FSM_Leviathan_HuntingPlayer : FiniteStateMachine
 	 * For instance: steering behaviours, blackboard, ...*/
 	private Arrive arrive;
 	private LEVIATHAN_Blackboard blackboard;
+	private SteeringContext steeringContext;
 	private float stamina;
 
 	public override void OnEnter()
@@ -20,6 +21,7 @@ public class FSM_Leviathan_HuntingPlayer : FiniteStateMachine
 		 * Usually this code includes .GetComponent<...> invocations */
 		arrive = GetComponent<Arrive>();
 		blackboard = GetComponent<LEVIATHAN_Blackboard>();
+		steeringContext = GetComponent<SteeringContext>();
 		base.OnEnter(); // do not remove
 	}
 
@@ -41,12 +43,17 @@ public class FSM_Leviathan_HuntingPlayer : FiniteStateMachine
 		State chasePlayer = new State("Chase_Player",
 			() =>
 			{
+				steeringContext.maxSpeed = blackboard.huntingSpeed;
 				arrive.target = blackboard.Player;
 				arrive.enabled = true;
 				stamina = 0f;
 			},
 			() => { stamina += Time.deltaTime; },
-			() => { arrive.enabled = false; }
+			() =>
+			{
+				arrive.enabled = false; 
+				steeringContext.maxSpeed = blackboard.speed;
+			}
 		);
 		State eatPlayer = new State("Eat_State",
 			() => { blackboard.eatMaxTimer = 0f; },
