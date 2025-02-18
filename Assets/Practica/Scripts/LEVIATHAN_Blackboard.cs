@@ -12,6 +12,7 @@ public class LEVIATHAN_Blackboard : MonoBehaviour
     public float speed = 2f;
     public float maxGuardTimer = 5f;
     public float playerStealTimer = 5f;
+    public float homeArrivedRadius = 1.5f;
 
     public GameObject Home;
     public GameObject Player;

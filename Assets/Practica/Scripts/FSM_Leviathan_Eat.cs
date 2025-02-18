@@ -17,7 +17,7 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 		seek = GetComponent<Seek>();
 		blackboard = GetComponent<LEVIATHAN_Blackboard>();
 		wanderAround = GetComponent<WanderAround>();
-		base.OnEnter(); // do not remove
+		base.OnEnter();
 	}
 
 	public override void OnExit()
@@ -58,6 +58,7 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 			() => { eatTimer += Time.deltaTime; },
 			() => { Destroy(fish); }
 		);
+		
 		Transition hungry = new Transition("Hungry",
 			() =>
 			{
