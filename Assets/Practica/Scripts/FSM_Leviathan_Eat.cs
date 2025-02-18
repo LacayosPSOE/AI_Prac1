@@ -76,7 +76,7 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 			() =>
 			{
 				fish = SensingUtils.FindRandomInstanceWithinRadius(gameObject, "FISH", 1000f);
-				return (fish != null && eatTimer >= blackboard.eatMaxTimer && Random.value < 0.5f);
+				return (fish && elapsedTime >= blackboard.eatMaxTimer && Random.value < 0.5f);
 			},
 			() => { });
 
