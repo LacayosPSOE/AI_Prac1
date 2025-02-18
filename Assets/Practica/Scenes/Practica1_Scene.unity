@@ -942,20 +942,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WanderMaxTime: 8
-  WanderTime: 0
-  timeToEatFish: 1.5
-  eatRadius: 1.5
   eatMaxTimer: 1.5
-  playerChaseRadius: 5
   maxStamina: 6
-  speed: 2
-  guardingSpeed: 4
-  huntingSpeed: 4
   maxGuardTimer: 5
-  playerStealTimer: 5
+  eatRadius: 1.5
+  playerChaseRadius: 5
   homeArrivedRadius: 1.5
   screenBoundDistance: 50
   screenSafeBounds: 20
+  speed: 2
+  guardingSpeed: 4
+  huntingSpeed: 4
   Home: {fileID: 1908766566}
   Player: {fileID: 759567563}
 --- !u!114 &789880617
@@ -998,7 +995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15fadfb23a909584e8ff82b91a0977c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 1
+  maxAcceleration: 2
   maxSpeed: 1
   clipVelocity: 1
   maxAngularAcceleration: 0
@@ -1026,7 +1023,7 @@ MonoBehaviour:
   wanderOffset: 2
   showWanderGizmos: 1
   wanderTargetOrientation: 0
-  seekWeight: 0.4
+  seekWeight: 0.5
   lookAheadLength: 10
   avoidDistance: 12
   secondaryWhiskerAngle: 30

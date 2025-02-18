@@ -9,7 +9,8 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 	private LEVIATHAN_Blackboard blackboard;
 	private GameObject fish;
 	private WanderAround wanderAround;
-	private float eatTimer;
+	private SteeringContext steeringContext;
+	private float elapsedTime;
 
 
 	public override void OnEnter()
@@ -17,6 +18,7 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 		seek = GetComponent<Seek>();
 		blackboard = GetComponent<LEVIATHAN_Blackboard>();
 		wanderAround = GetComponent<WanderAround>();
+		steeringContext = GetComponent<SteeringContext>();
 		base.OnEnter();
 	}
 
@@ -31,10 +33,10 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 		State wander = new State("Wander",
 			() =>
 			{
-				blackboard.WanderTime = 0f;
+				elapsedTime = 0f;
 				wanderAround.enabled = true;
 			},
-			() => { blackboard.WanderTime += Time.deltaTime; },
+			() => { elapsedTime += Time.deltaTime; },
 			() => { wanderAround.enabled = false; }
 		);
 
@@ -42,20 +44,19 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 			() =>
 			{
 				seek.target = fish;
-				blackboard.speed = blackboard.speed * 2;
+				steeringContext.maxSpeed = blackboard.huntingSpeed;
 				seek.enabled = true;
 			},
 			() => { },
 			() =>
 			{
-				wanderAround.enabled = false;
-				blackboard.speed = blackboard.speed / 2;
+				steeringContext.maxSpeed = blackboard.speed;
 				seek.enabled = false;
 			});
 
 		State eatFish = new State("Eat_Fish",
-			() => { eatTimer = 0f; },
-			() => { eatTimer += Time.deltaTime; },
+			() => { elapsedTime = 0f; },
+			() => { elapsedTime += Time.deltaTime; },
 			() => { Destroy(fish); }
 		);
 		
@@ -63,7 +64,7 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 			() =>
 			{
 				fish = SensingUtils.FindRandomInstanceWithinRadius(gameObject, "FISH", 1000f);
-				return (fish != null && blackboard.WanderTime >= blackboard.WanderMaxTime);
+				return fish != null && elapsedTime < blackboard.WanderMaxTime;
 			},
 			() => { });
 
@@ -80,7 +81,7 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 			() => { });
 
 		Transition notHungry = new Transition("Not_Hungry",
-			() => { return eatTimer >= blackboard.eatMaxTimer; },
+			() => { return elapsedTime >= blackboard.eatMaxTimer; },
 			() => { });
 
 		AddStates(wander, huntFish, eatFish);

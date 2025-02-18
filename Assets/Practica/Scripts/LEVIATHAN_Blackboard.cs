@@ -3,7 +3,6 @@ using UnityEngine;
 public class LEVIATHAN_Blackboard : MonoBehaviour
 {
 	[Header("Times")]
-	public float WanderTime = 0f;
 	public float WanderMaxTime = 8f;
 	public float eatMaxTimer = 1.5f;
 	public float maxStamina = 6f;

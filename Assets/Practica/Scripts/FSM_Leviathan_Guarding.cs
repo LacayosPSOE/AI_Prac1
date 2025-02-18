@@ -52,7 +52,7 @@ public class FSM_Leviathan_Guarding : FiniteStateMachine
 		);
 		
 		Transition playerTooCloseHome = new Transition("Player_Too_Close_Home",
-			() => { return SensingUtils.DistanceToTarget(blackboard.Player, blackboard.Home) < blackboard.homeArrivedRadius; },
+			() => { return blackboard.Player && SensingUtils.DistanceToTarget(blackboard.Player, blackboard.Home) < blackboard.homeArrivedRadius; },
 			() => { }
 		);
 
@@ -72,7 +72,5 @@ public class FSM_Leviathan_Guarding : FiniteStateMachine
 		AddTransition(guard, stopGuarding, EAT);
 		
 		initialState = EAT;
-
-		//Falta que el leviathan vaya a por el player cuando el player esta en su guarida
 	}
 }
