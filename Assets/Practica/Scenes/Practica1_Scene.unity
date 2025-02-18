@@ -948,8 +948,8 @@ MonoBehaviour:
   eatRadius: 1.5
   playerChaseRadius: 5
   homeArrivedRadius: 1.5
-  screenBoundDistance: 50
-  screenSafeBounds: 20
+  screenBoundDistance: 15
+  screenSafeBounds: 5
   speed: 2
   guardingSpeed: 4
   huntingSpeed: 4
