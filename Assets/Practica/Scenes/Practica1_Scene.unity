@@ -2681,11 +2681,11 @@ MonoBehaviour:
   alignmentWeight: 0.2
   addWanderIfZero: 1
   wanderRate: 30
-  wanderRadius: 10
-  wanderOffset: 20
+  wanderRadius: 1
+  wanderOffset: 2
   showWanderGizmos: 1
   wanderTargetOrientation: 0
-  seekWeight: 0.2
+  seekWeight: 0.4
   lookAheadLength: 10
   avoidDistance: 12
   secondaryWhiskerAngle: 30
