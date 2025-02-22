@@ -17,8 +17,10 @@ public class LEVIATHAN_Blackboard : MonoBehaviour
 
 	[Header("Speeds")]
 	public float speed = 2f;
+	public float acceleration = 2f;
 	public float guardingSpeed = 4f;
 	public float huntingSpeed = 4f;
+	public float huntingAcceleration = 5f;
 
 	public GameObject Home;
 	public GameObject Player;

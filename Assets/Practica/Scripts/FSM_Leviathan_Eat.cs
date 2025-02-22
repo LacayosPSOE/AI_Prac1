@@ -5,7 +5,7 @@ using Steerings;
 [CreateAssetMenu(fileName = "FSM_Leviathan_Eat", menuName = "Finite State Machines/FSM_Leviathan_Eat", order = 1)]
 public class FSM_Leviathan_Eat : FiniteStateMachine
 {
-	private Seek seek;
+	private Arrive seek;
 	private LEVIATHAN_Blackboard blackboard;
 	private GameObject fish;
 	private WanderAround wanderAround;
@@ -15,10 +15,11 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 
 	public override void OnEnter()
 	{
-		seek = GetComponent<Seek>();
+		seek = GetComponent<Arrive>();
 		blackboard = GetComponent<LEVIATHAN_Blackboard>();
 		wanderAround = GetComponent<WanderAround>();
 		steeringContext = GetComponent<SteeringContext>();
+		steeringContext.maxSpeed = blackboard.speed;
 		base.OnEnter();
 	}
 
@@ -45,12 +46,14 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 			{
 				seek.target = fish;
 				steeringContext.maxSpeed = blackboard.huntingSpeed;
+				steeringContext.maxAcceleration = blackboard.huntingAcceleration;
 				seek.enabled = true;
 			},
 			() => { },
 			() =>
 			{
 				steeringContext.maxSpeed = blackboard.speed;
+				steeringContext.maxAcceleration = blackboard.acceleration;
 				seek.enabled = false;
 			});
 
