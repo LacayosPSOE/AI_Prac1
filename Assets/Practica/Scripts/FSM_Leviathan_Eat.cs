@@ -84,7 +84,7 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 			() => { });
 
 		Transition notHungry = new Transition("Not_Hungry",
-			() => { return elapsedTime >= blackboard.eatMaxTimer; },
+			() => { return fish && elapsedTime >= blackboard.eatMaxTimer; },
 			() => { });
 
 		AddStates(wander, huntFish, eatFish);
