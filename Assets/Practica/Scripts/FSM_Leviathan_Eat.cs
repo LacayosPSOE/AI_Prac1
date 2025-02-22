@@ -44,6 +44,7 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 		State huntFish = new State("Hunt_Fish",
 			() =>
 			{
+                fish = SensingUtils.FindRandomInstanceWithinRadius(gameObject, "FISH", 1000f);
 				seek.target = fish;
 				steeringContext.maxSpeed = blackboard.huntingSpeed;
 				steeringContext.maxAcceleration = blackboard.huntingAcceleration;
