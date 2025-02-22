@@ -1010,8 +1010,10 @@ MonoBehaviour:
   screenBoundDistance: 50
   screenSafeBounds: 25
   speed: 2
+  acceleration: 5
   guardingSpeed: 5
-  huntingSpeed: 7
+  huntingSpeed: 10
+  huntingAcceleration: 10
   Home: {fileID: 1908766566}
   Player: {fileID: 759567563}
 --- !u!114 &789880617
