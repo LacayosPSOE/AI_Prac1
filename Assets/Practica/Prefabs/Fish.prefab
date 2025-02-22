@@ -221,5 +221,5 @@ MonoBehaviour:
   leviathan: {fileID: 0}
   dangerousDistanceFromMonster: 5
   safeDistanceFromMonster: 10
-  speed: 5
-  fleeSpeed: 10
+  speed: 2
+  fleeSpeed: 5

@@ -1011,7 +1011,7 @@ MonoBehaviour:
   screenSafeBounds: 25
   speed: 2
   guardingSpeed: 5
-  huntingSpeed: 10
+  huntingSpeed: 7
   Home: {fileID: 1908766566}
   Player: {fileID: 759567563}
 --- !u!114 &789880617
