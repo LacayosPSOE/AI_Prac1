@@ -58,7 +58,7 @@ public class FSM_Leviathan_HuntingPlayer : FiniteStateMachine
 		State eatPlayer = new State("Eat_State",
 			() => { blackboard.eatMaxTimer = 0f; },
 			() => { blackboard.eatMaxTimer += Time.deltaTime; },
-			() => { Destroy(blackboard.Player); }
+			() => { blackboard.Player.SetActive(false); }
 		);
 		
 		Transition playerTooClose = new Transition("Player_Too_Close",
