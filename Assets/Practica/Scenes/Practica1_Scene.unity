@@ -1012,7 +1012,7 @@ MonoBehaviour:
   speed: 2
   acceleration: 5
   guardingSpeed: 5
-  huntingSpeed: 10
+  huntingSpeed: 7
   huntingAcceleration: 100
   Home: {fileID: 1908766566}
   Player: {fileID: 759567563}

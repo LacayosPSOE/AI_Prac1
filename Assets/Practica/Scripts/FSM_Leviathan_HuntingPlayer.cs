@@ -58,18 +58,21 @@ public class FSM_Leviathan_HuntingPlayer : FiniteStateMachine
 		State eatPlayer = new State("Eat_State",
 			() => { blackboard.eatMaxTimer = 0f; },
 			() => { blackboard.eatMaxTimer += Time.deltaTime; },
-			() => { blackboard.Player.SetActive(false); }
+			() =>
+			{
+				blackboard.Player.SetActive(false);
+			}
 		);
 		
 		Transition playerTooClose = new Transition("Player_Too_Close",
 			() =>
 			{
-				return blackboard.Player && SensingUtils.DistanceToTarget(gameObject, blackboard.Player) < blackboard.playerChaseRadius;
+				return blackboard.Player.activeSelf && SensingUtils.DistanceToTarget(gameObject, blackboard.Player) < blackboard.playerChaseRadius;
 			},
 			() => { }
 		);
 		Transition playerWithinEatRange = new Transition("Player_Within_Eat_Range",
-			() => { return blackboard.Player && SensingUtils.DistanceToTarget(gameObject, blackboard.Player) < blackboard.eatRadius; },
+			() => { return blackboard.Player.activeSelf && SensingUtils.DistanceToTarget(gameObject, blackboard.Player) < blackboard.eatRadius; },
 			() => { }
 		);
 		Transition playerEaten = new Transition("Player_Within_Eat_Range",

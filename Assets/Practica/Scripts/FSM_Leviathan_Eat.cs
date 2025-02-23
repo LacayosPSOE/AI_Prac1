@@ -44,7 +44,7 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 		State huntFish = new State("Hunt_Fish",
 			() =>
 			{
-                fish = SensingUtils.FindRandomInstanceWithinRadius(gameObject, "FISH", 1000f);
+				fish = SensingUtils.FindRandomInstanceWithinRadius(gameObject, "FISH", 1000f);
 				seek.target = fish;
 				steeringContext.maxSpeed = blackboard.huntingSpeed;
 				steeringContext.maxAcceleration = blackboard.huntingAcceleration;
@@ -59,9 +59,14 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 			});
 
 		State eatFish = new State("Eat_Fish",
-			() => { elapsedTime = 0f; },
+			() =>
+			{
+				elapsedTime = 0f;
+				fish.GetComponent<FSMExecutor>().enabled = false;
+				fish.GetComponent<Flee>().enabled = false;
+			},
 			() => { elapsedTime += Time.deltaTime; },
-			() => { Destroy(fish); }
+			() => { GameObject.Destroy(fish); }
 		);
 		
 		Transition hungry = new Transition("Hungry",
@@ -79,13 +84,13 @@ public class FSM_Leviathan_Eat : FiniteStateMachine
 		Transition stillHungry = new Transition("Still_Hungry",
 			() =>
 			{
-				fish = SensingUtils.FindRandomInstanceWithinRadius(gameObject, "FISH", 1000f);
-				return (fish && elapsedTime >= blackboard.eatMaxTimer && Random.value < 0.5f);
+				GameObject moreFishes = SensingUtils.FindRandomInstanceWithinRadius(gameObject, "FISH", 1000f);
+				return moreFishes && (elapsedTime >= blackboard.eatMaxTimer && Random.value < 0.5f);
 			},
 			() => { });
 
 		Transition notHungry = new Transition("Not_Hungry",
-			() => { return fish && elapsedTime >= blackboard.eatMaxTimer; },
+			() => { return elapsedTime >= blackboard.eatMaxTimer; },
 			() => { });
 
 		AddStates(wander, huntFish, eatFish);
