@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9e8a52f4445525145b96a5d414b8b6e7
+guid: 8209f1cf1cc0c1a4db9fb128bc77e02f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8594515011827703002
-    second: Paladin_0
+      213: -1915776564401465818
+    second: Fish_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Paladin_0
+      name: Fish_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 755
-        height: 833
+        x: 303
+        y: 75
+        width: 496
+        height: 268
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6236f37e1262ab880800000000000000
-      internalID: -8594515011827703002
+      spriteID: 62615d96d5bc965e0800000000000000
+      internalID: -1915776564401465818
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Paladin_0: -8594515011827703002
+      Fish_0: -1915776564401465818
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

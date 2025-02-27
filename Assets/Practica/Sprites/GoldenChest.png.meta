@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8482e56a5f070da45a252c213cd4ffba
+guid: 82c3a4a673f787f43867148f40020275
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1012188541264668013
-    second: Cultist_0
+      213: 6410765919746245902
+    second: GoldenChest_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cultist_0
+      name: GoldenChest_0
       rect:
         serializedVersion: 2
-        x: 237
-        y: 101
-        width: 716
-        height: 954
+        x: 295
+        y: 369
+        width: 594
+        height: 520
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d652dcf8d140c0e00800000000000000
-      internalID: 1012188541264668013
+      spriteID: e05c7a863ad97f850800000000000000
+      internalID: 6410765919746245902
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cultist_0: 1012188541264668013
+      GoldenChest_0: 6410765919746245902
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
