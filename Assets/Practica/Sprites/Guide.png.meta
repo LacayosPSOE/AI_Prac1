@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 54d5ad0ef1e67484b8b0bd9be9c96253
+guid: 99adc522e3de1514cb7860c07684004b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -169549973756943938
-    second: 356px-Leviathan_0
+      213: 855067733875592807
+    second: Guide_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 356px-Leviathan_0
+      name: Guide_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 356
-        height: 160
+        width: 793
+        height: 1403
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eb16a8a7233a5adf0800000000000000
-      internalID: -169549973756943938
+      spriteID: 76e8d88d29fcddb00800000000000000
+      internalID: 855067733875592807
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      356px-Leviathan_0: -169549973756943938
+      Guide_0: 855067733875592807
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

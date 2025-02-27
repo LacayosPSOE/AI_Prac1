@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2096bf95860e4ad4b98a3fc0d7a06323
+guid: 2c5a860ee021bd54f924cbb36e904e3f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2843223547524874523
-    second: beautiful-underwater-scenery-with-various-types-of-fish-and-coral-reefs-photo_0
+      213: 2609776730716998408
+    second: Skeletron_Head_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: beautiful-underwater-scenery-with-various-types-of-fish-and-coral-reefs-photo_0
+      name: Skeletron_Head_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 714
-        height: 400
+        width: 282
+        height: 360
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b110f3f90c8257720800000000000000
-      internalID: 2843223547524874523
+      spriteID: 80b87710c1ac73420800000000000000
+      internalID: 2609776730716998408
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      beautiful-underwater-scenery-with-various-types-of-fish-and-coral-reefs-photo_0: 2843223547524874523
+      Skeletron_Head_0: 2609776730716998408
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
